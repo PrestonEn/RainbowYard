@@ -2,3 +2,6 @@
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
 \beamer@sectionintoc {2}{Boltzmann Machines}{6}{0}{2}
 \beamer@sectionintoc {3}{Restricted Boltzmann Machines in Deep Learning}{18}{0}{3}
+\beamer@sectionintoc {4}{RBMs For Dimensionality Reduction}{21}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{24}{0}{5}
+\beamer@sectionintoc {6}{Sources}{25}{0}{6}

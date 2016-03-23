@@ -139,6 +139,7 @@
 	\frame{\frametitle{The Maximum Likelihood Learning Algorithm} 
 					\begin{figure}						
 						\includegraphics[height=2in]{maxlike.jpg}
+						\hspace*{15pt}\hbox{\scriptsize Credit:\thinspace{\small\itshape Geoffrey Hinton }}
 					\end{figure}
 				\begin{equation}
 					$\dfrac{\delta\log P(v)}{\delta w_{ij}} = <v_{i}h_{j}>^{0} - <v_{i}h_{j}>^{\infty}$
@@ -174,6 +175,7 @@
 	\frame{\frametitle{The Maximum Likelihood Learning Algorithm} 
 		\begin{figure}						
 			\includegraphics[height=2in]{features.png}
+				\hspace*{15pt}\hbox{\scriptsize Credit:\thinspace{\small\itshape Geoffrey Hinton }}
 		\end{figure}
 
 	}
@@ -183,13 +185,14 @@
 	\frame{\frametitle{Visualization Of Features On The Digit 2} 
 		\begin{figure}						
 			\includegraphics[height=2.5in]{slide_19.jpg}
+				\hspace*{15pt}\hbox{\scriptsize Credit:\thinspace{\small\itshape Geoffrey Hinton }}
 		\end{figure}
 					
 	}
 
 
 \section{Restricted Boltzmann Machines in Deep Learning}
-	\frame{\frametitle{Layers Of Features: Training A Deep Network} 
+	\frame{\frametitle{Layers Of Features: Greedy Learning A Deep Network} 
 		\begin{itemize}
 			\item Begin by training the first layer as with a single RBM.
 			\item Treat the activations of the trained features as the data vector for the next hidden layer.
@@ -202,17 +205,108 @@
 	}
 	
 
-\frame{\frametitle{Layers Of Features: Training A Deep Network} 
+\frame{\frametitle{An Explanation Of Greedy Learning}
+	\begin{itemize}
+		\item Each layer (RBM) converts its data distribution (input) into a posterior distrobution over its hidden units.
+		\item Modeling made of 2 tasks
+		\begin{enumerate}
+			\item Learn generative weights that can convert the posterior back into data $P(v|h,W)$
+			\item Learn to model the posterior distribution over the hidden units $P(h|W)$
+		\end{enumerate}
+		
+		
+	\end{itemize}
+
+	\begin{block}{}
+		Hinton calls this process "creeping parameterization"
+	\end{block}
+}
+
+\frame{\frametitle{A Deep Belief Network For Digit Classification} 
 		\begin{figure}						
-			\includegraphics[height=2.5in]{fig1.png}
+			\includegraphics[height=2.5in]{dbn.png}
+				\hspace*{15pt}\hbox{\scriptsize Credit:\thinspace{\small\itshape Geoffrey Hinton }}
 		\end{figure}
 }
 
+\section{RBMs For Dimensionality Reduction}
 
-\section{Summary}
+\frame{\frametitle{Deep Autoencoders}
+	
+	\begin{block}{}
+		We can communicate data into a bottleneck of RBMs to perform non-linear dimensionality reduction.
+	\end{block}
+	
+	\begin{itemize}
+		\item Optimizing deep autoencoders via backprop is very difficult (The gradient issue).
+		\item A better solution
+		\begin{itemize}
+			\item Train the first "stack" of RBMs
+			\item Then unroll them
+			\item Fine tune with backprop
+		\end{itemize}
+	\end{itemize}
 
-\section{Questions}
+}
+
+\frame{\frametitle{Deep Autoencoders}
+	
+		\begin{figure}						
+			\includegraphics[height=2in]{dpca935_bw.png}
+					\hspace*{15pt}\hbox{\scriptsize Credit:\thinspace{\small\itshape Geoffrey Hinton }}
+			\caption{A deep autoencoder}
+		\end{figure}
+	
+}
+
+\frame{\frametitle{Deep Autoencoders}
+	\begin{block}{PCA vs Deep Autoencoder}
+		The top row is the original data, followed by the autoencoder and finally PCA.
+	\end{block}
+	\begin{figure}						
+		\includegraphics[height=1in]{dpca_res.png}
+		\hspace*{15pt}\hbox{\scriptsize Credit:\thinspace{\small\itshape Geoffrey Hinton }}
+	\end{figure}
+	
+}
+
+\section{Conclusion}
+
+\frame{\frametitle{Summary}
+	\begin{itemize}
+		\item Restricted Boltzmann Machines allow the extraction of features from a probability distribution without any labeled data
+		\item The Restriction on network topology reduces computation time and allows the prior distribution to be sampled without bias
+		\item Many layers of RBMs can be linked to create a Deep Belief Network, for generation or classification, without any labeled data
+		\item These principals can be applied as non-linear dimensionality reduction
+	\end{itemize}
+}
 
 
+
+
+\section{Sources}
+
+\frame{begin{frame}[allowframebreaks]
+	\frametitle<presentation>{Further Reading}    
+	\begin{thebibliography}{10}    
+		\beamertemplatebookbibitems
+		\bibitem{	Hinton2002}
+		Hinton, G.E.
+		\newblock {\em Training products of experts by minimizing contrastive divergence.
+			Neural Computation 14, 1771–1800 (2002)}.
+		\newblock Klein-Verlag, 1990.
+		\beamertemplatearticlebibitems
+		\bibitem{Norouzi2006}
+		Norouzi, M.
+		
+		\newblock {\em Convolutional Restricted Boltzmann Machines For Feature Learning. Simon Fraser University, (2009)}
+		
+		\beamertemplatearticlebibitems
+		\bibitem{Fischer2013}
+		Fischer, A
+		
+		\newblock {\em An Introduction to Restricted Boltzmann Machines (2013)}
+	\end{thebibliography}
+}
 
 \end{document}
