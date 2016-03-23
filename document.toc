@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Boltzmann Machines}{6}{0}{2}
+\beamer@sectionintoc {3}{Restricted Boltzmann Machines in Deep Learning}{18}{0}{3}
